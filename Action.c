@@ -450,7 +450,7 @@ static const struct {
    const char* key;
    const char* info;
 } helpLeft[] = {
-   { .key = " Arrows: ", .info = "scroll process list" },
+   { .key = "h/j/k/l: ", .info = "scroll process list" },
    { .key = " Digits: ", .info = "incremental PID search" },
    { .key = "   F3 /: ", .info = "incremental name search" },
    { .key = "   F4 \\: ",.info = "incremental name filtering" },
@@ -459,8 +459,8 @@ static const struct {
    { .key = "      m: ", .info = "toggle merged command" },
    { .key = "      Z: ", .info = "pause/resume process updates" },
    { .key = "      u: ", .info = "show processes of a single user" },
-   { .key = "      H: ", .info = "hide/show user process threads" },
-   { .key = "      K: ", .info = "hide/show kernel threads" },
+   /* { .key = "      H: ", .info = "hide/show user process threads" }, */
+   /* { .key = "      K: ", .info = "hide/show kernel threads" }, */
    { .key = "      F: ", .info = "cursor follows process" },
    { .key = " F6 + -: ", .info = "expand/collapse tree" },
    { .key = "  P M T: ", .info = "sort by CPU%, MEM% or TIME" },
@@ -476,7 +476,7 @@ static const struct {
    { .key = "  Space: ", .info = "tag process" },
    { .key = "      c: ", .info = "tag process and its children" },
    { .key = "      U: ", .info = "untag all processes" },
-   { .key = "   F9 k: ", .info = "kill process/tagged processes" },
+   { .key = "   F9 K: ", .info = "kill process/tagged processes" },
    { .key = "   F7 ]: ", .info = "higher priority (root only)" },
    { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
 #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
@@ -484,12 +484,12 @@ static const struct {
 #endif
    { .key = "      e: ", .info = "show process environment" },
    { .key = "      i: ", .info = "set IO priority" },
-   { .key = "      l: ", .info = "list open files with lsof" },
+   /* { .key = "      l: ", .info = "list open files with lsof" }, */
    { .key = "      x: ", .info = "list file locks of process" },
    { .key = "      s: ", .info = "trace syscalls with strace" },
    { .key = "      w: ", .info = "wrap process command in multiple lines" },
    { .key = " F2 C S: ", .info = "setup" },
-   { .key = "   F1 h: ", .info = "show this help screen" },
+   { .key = "   F1 ?: ", .info = "show this help screen" },
    { .key = "  F10 q: ", .info = "quit" },
    { .key = NULL, .info = NULL }
 };
@@ -644,8 +644,8 @@ void Action_setBindings(Htop_Action* keys) {
    keys['M'] = actionSortByMemory;
    keys['T'] = actionSortByTime;
    keys['P'] = actionSortByCPU;
-   keys['H'] = actionToggleUserlandThreads;
-   keys['K'] = actionToggleKernelThreads;
+   /* keys['H'] = actionToggleUserlandThreads; */
+   /* keys['K'] = actionToggleKernelThreads; */
    keys['p'] = actionToggleProgramPath;
    keys['m'] = actionToggleMergedCommand;
    keys['t'] = actionToggleTreeView;
@@ -672,7 +672,7 @@ void Action_setBindings(Htop_Action* keys) {
    keys['q'] = actionQuit;
    keys['a'] = actionSetAffinity;
    keys[KEY_F(9)] = actionKill;
-   keys['k'] = actionKill;
+   keys['K'] = actionKill;
    keys[KEY_RECLICK] = actionExpandOrCollapse;
    keys['+'] = actionExpandOrCollapse;
    keys['='] = actionExpandOrCollapse;
@@ -684,12 +684,11 @@ void Action_setBindings(Htop_Action* keys) {
    keys['C'] = actionSetup;
    keys[KEY_F(2)] = actionSetup;
    keys['x'] = actionShowLocks;
-   keys['l'] = actionLsof;
+   /* keys['l'] = actionLsof; */
    keys['s'] = actionStrace;
    keys[' '] = actionTag;
    keys['\014'] = actionRedraw; // Ctrl+L
    keys[KEY_F(1)] = actionHelp;
-   keys['h'] = actionHelp;
    keys['?'] = actionHelp;
    keys['U'] = actionUntagAll;
    keys['c'] = actionTagAllChildren;
